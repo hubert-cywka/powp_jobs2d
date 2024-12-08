@@ -32,6 +32,6 @@ public class LineDrawerAdapter implements Job2dDriver {
 
     @Override
     public String toString() {
-        return "DrawPanelController Driver";
+        return "LineDrawer Driver";
     }
 }
