@@ -7,9 +7,9 @@ import edu.kis.powp.jobs2d.Job2dDriver;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 
 public class DrawPanelControllerAdapter implements Job2dDriver {
-	private int startX = 0;
-	private int startY = 0;
 	private final DrawPanelController controller;
+	private int startX = 0;
+	private int startY = 0;	
 
 	public DrawPanelControllerAdapter() {
 		this.controller = DrawerFeature.getDrawerController();
