@@ -13,12 +13,16 @@ import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelControllerDriverAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.command.DriverCommand;
+import edu.kis.powp.jobs2d.events.SelectFigureFromCommandOptionListener;
 import edu.kis.powp.jobs2d.events.SelectScribbleFigureOptionListener;
 import edu.kis.powp.jobs2d.events.SelectEnvelopeFigureOptionListener;
 import edu.kis.powp.jobs2d.events.SelectSquareFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.powp.jobs2d.lines.decorators.LineColorDecorator;
+import edu.kis.powp.jobs2d.patterns.DriverCommandFactory;
+import edu.kis.powp.jobs2d.patterns.IDriverCommandFactory;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -33,6 +37,10 @@ public class TestJobs2dPatterns {
 		application.addTest("Figure Joe 1", new SelectSquareFigureOptionListener(driverManager));
 		application.addTest("Figure Joe 2", new SelectScribbleFigureOptionListener(driverManager));
 		application.addTest("Figure Jane 1", new SelectEnvelopeFigureOptionListener(driverManager));
+
+		IDriverCommandFactory driverCommandFactory = new DriverCommandFactory(driverManager);
+		DriverCommand drawTriangleCommand = driverCommandFactory.createDrawTriangleCommand(200, 200);
+		application.addTest("Triangle", new SelectFigureFromCommandOptionListener(drawTriangleCommand));
 	}
 
 	/**
